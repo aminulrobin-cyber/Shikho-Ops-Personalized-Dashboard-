@@ -811,13 +811,7 @@ td{padding:9px 12px;vertical-align:middle}
   --text:#111827; --sub:#6b7280; --muted:#9ca3af;
   --font:'Plus Jakarta Sans',sans-serif;
 }
-body{
-  font-family:var(--font);min-height:100vh;
-  display:flex;align-items:center;justify-content:center;padding:24px 16px;
-  background:radial-gradient(ellipse at 20% 20%,rgba(53,72,148,.08) 0%,transparent 55%),
-             radial-gradient(ellipse at 80% 80%,rgba(207,39,141,.06) 0%,transparent 55%),
-             #f0f2f8;
-}
+.reg-wrapper{  font-family:var(--font);min-height:100vh;  display:flex;align-items:center;justify-content:center;padding:24px 16px;  background:radial-gradient(ellipse at 20% 20%,rgba(53,72,148,.08) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(207,39,141,.06) 0%,transparent 55%),#f0f2f8;}
 .card{
   background:#fff;border-radius:20px;
   box-shadow:0 4px 8px rgba(0,0,0,.04),0 20px 50px rgba(0,0,0,.12);
