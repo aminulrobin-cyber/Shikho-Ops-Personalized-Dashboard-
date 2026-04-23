@@ -5,16 +5,8 @@ import { getGoogleSheetsClient } from "../lib/google";
 // We will export a dummy function for now to ensure compilation and basic structure.
 
 export async function registerUser(name, phone, empId) {
-  // TODO: Add getServerSession check
-  const sheets = await getGoogleSheetsClient();
+  // TODO: Connect to Google Sheets once GOOGLE_SERVICE_ACCOUNT_CREDENTIALS is set in Vercel
   console.log("Registering user:", name, phone, empId);
-  // Example Google Sheets Append:
-  // await sheets.spreadsheets.values.append({
-  //   spreadsheetId: process.env.GOOGLE_SHEET_ID,
-  //   range: 'Profiles!A:G',
-  //   valueInputOption: 'USER_ENTERED',
-  //   requestBody: { values: [[email, name, phone, empId, new Date().toISOString(), 1, "today"]] }
-  // });
   return { success: true, name };
 }
 
