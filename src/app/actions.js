@@ -43,12 +43,45 @@ export async function createCalendarEvent(title, description, startDate, startTi
 }
 
 export async function getDashboardData() {
-  // Returns mock data for now to allow UI to render without errors
+  // Mock tasks for now - in a real app, these would come from Google Sheets or a DB
+  const mockTasks = [
+    { id: "T1", name: "Review Morning Operations", status: "Pending", priority: "Normal" },
+    { id: "T2", name: "Check Support Tickets", status: "In Progress", priority: "Important" },
+    { id: "T3", name: "Update Shift Log", status: "Pending", priority: "Normal" },
+    { id: "T4", name: "Team Sync Meeting", status: "Completed", priority: "Normal" },
+  ];
+
   return {
-    profile: { name: "User", empId: "001" },
-    todayStates: [],
+    profile: { name: "User", empId: "SHK-001" },
+    tasks: mockTasks,
     shiftStatus: { hasSession: false },
-    loginStats: { streak: 1 },
-    upcomingEvents: []
+    loginStats: { streak: 5 },
   };
+}
+
+export async function getCalendarEvents(accessToken) {
+  if (!accessToken) throw new Error("No access token provided");
+  
+  try {
+    const res = await fetch("https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=" + new Date().toISOString() + "&maxResults=10&singleEvents=true&orderBy=startTime", {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    });
+    
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error?.message || "Failed to fetch calendar");
+    }
+    
+    const data = await res.json();
+    return data.items.map(item => ({
+      id: item.id,
+      title: item.summary,
+      start: item.start.dateTime || item.start.date,
+      end: item.end.dateTime || item.end.date,
+      link: item.htmlLink
+    }));
+  } catch (e) {
+    console.error("Calendar fetch error:", e);
+    return [];
+  }
 }
