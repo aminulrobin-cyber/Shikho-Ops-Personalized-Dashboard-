@@ -13,7 +13,108 @@ export default function Dashboard() {
     }
   }, [status, router]);
 
-  if (status === "loading" || !session) return <div>Loading...</div>;
+  if (status === "loading" || !session) return (
+    <>
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: -600px 0; }
+          100% { background-position: 600px 0; }
+        }
+        .sk {
+          background: linear-gradient(90deg, #e8ecf4 25%, #f5f7fc 50%, #e8ecf4 75%);
+          background-size: 600px 100%;
+          animation: shimmer 1.4s infinite;
+          border-radius: 8px;
+        }
+        .sk-nav {
+          height: 62px;
+          background: linear-gradient(135deg, #CF278D, #a81f72);
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 0 22px; box-shadow: 0 3px 20px rgba(207,39,141,.28);
+        }
+        .sk-nav-left { display: flex; align-items: center; gap: 10px; }
+        .sk-nav-circle { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,.25); }
+        .sk-nav-text { width: 130px; height: 16px; background: rgba(255,255,255,.25); border-radius: 6px; }
+        .sk-nav-right { display: flex; gap: 10px; align-items: center; }
+        .sk-nav-chip { width: 80px; height: 28px; border-radius: 20px; background: rgba(255,255,255,.2); }
+        .sk-nav-user { width: 100px; height: 28px; border-radius: 20px; background: rgba(255,255,255,.2); }
+        .sk-page { max-width: 1200px; margin: 0 auto; padding: 20px 18px; }
+        .sk-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+        .sk-title { width: 240px; height: 24px; }
+        .sk-prog { width: 180px; height: 14px; }
+        .sk-card { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 16px 20px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+        .sk-shift-info { display: flex; flex-direction: column; gap: 8px; }
+        .sk-tabs { display: flex; gap: 4px; margin-bottom: 14px; }
+        .sk-tab { width: 130px; height: 36px; border-radius: 8px; }
+        .sk-table-card { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; }
+        .sk-toolbar { padding: 10px 16px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
+        .sk-thead { background: #354894; padding: 10px 16px; display: flex; gap: 16px; }
+        .sk-th { height: 14px; background: rgba(255,255,255,.3); border-radius: 4px; }
+        .sk-row-item { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; display: flex; gap: 16px; align-items: center; }
+        .sk-cell { height: 12px; border-radius: 4px; }
+      `}</style>
+
+      {/* Skeleton Nav */}
+      <div className="sk-nav">
+        <div className="sk-nav-left">
+          <div className="sk-nav-circle"></div>
+          <div className="sk-nav-text"></div>
+        </div>
+        <div className="sk-nav-right">
+          <div className="sk-nav-chip"></div>
+          <div className="sk-nav-user"></div>
+        </div>
+      </div>
+
+      {/* Skeleton Page Content */}
+      <div className="sk-page">
+        {/* Title row */}
+        <div className="sk-row">
+          <div className="sk sk-title"></div>
+          <div className="sk sk-prog"></div>
+        </div>
+
+        {/* Shift card */}
+        <div className="sk-card">
+          <div className="sk-shift-info">
+            <div className="sk" style={{width: 60, height: 10}}></div>
+            <div className="sk" style={{width: 150, height: 20}}></div>
+            <div className="sk" style={{width: 200, height: 11}}></div>
+          </div>
+          <div className="sk" style={{width: 120, height: 38, borderRadius: 9}}></div>
+        </div>
+
+        {/* Tabs */}
+        <div className="sk-tabs">
+          {[160, 120, 120, 110].map((w, i) => (
+            <div key={i} className="sk sk-tab" style={{width: w}}></div>
+          ))}
+        </div>
+
+        {/* Table card */}
+        <div className="sk-table-card">
+          <div className="sk-toolbar">
+            <div className="sk" style={{width: 160, height: 14}}></div>
+            <div className="sk" style={{width: 120, height: 28, borderRadius: 7}}></div>
+          </div>
+          <div className="sk-thead">
+            {[280, 130, 100, 120, 90].map((w, i) => (
+              <div key={i} className="sk-th" style={{width: w, flex: i === 0 ? 1 : 'none'}}></div>
+            ))}
+          </div>
+          {[1,2,3,4,5].map(i => (
+            <div key={i} className="sk-row-item">
+              <div className="sk sk-cell" style={{flex: 1, height: 13}}></div>
+              <div className="sk sk-cell" style={{width: 130, height: 13}}></div>
+              <div className="sk sk-cell" style={{width: 100, height: 13}}></div>
+              <div className="sk sk-cell" style={{width: 120, height: 13}}></div>
+              <div className="sk sk-cell" style={{width: 90, height: 13}}></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <>
