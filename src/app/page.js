@@ -28,9 +28,9 @@ export default function Dashboard() {
         }
         .sk-nav {
           height: 62px;
-          background: linear-gradient(135deg, #CF278D, #a81f72);
+          background: linear-gradient(135deg, #304090, #1B2856);
           display: flex; align-items: center; justify-content: space-between;
-          padding: 0 22px; box-shadow: 0 3px 20px rgba(207,39,141,.28);
+          padding: 0 22px; box-shadow: 0 3px 16px rgba(48,64,144,.22);
         }
         .sk-nav-left { display: flex; align-items: center; gap: 10px; }
         .sk-nav-circle { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,.25); }
@@ -48,7 +48,7 @@ export default function Dashboard() {
         .sk-tab { width: 130px; height: 36px; border-radius: 8px; }
         .sk-table-card { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; overflow: hidden; }
         .sk-toolbar { padding: 10px 16px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
-        .sk-thead { background: #354894; padding: 10px 16px; display: flex; gap: 16px; }
+        .sk-thead { background: #304090; padding: 10px 16px; display: flex; gap: 16px; }
         .sk-th { height: 14px; background: rgba(255,255,255,.3); border-radius: 4px; }
         .sk-row-item { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; display: flex; gap: 16px; align-items: center; }
         .sk-cell { height: 12px; border-radius: 4px; }

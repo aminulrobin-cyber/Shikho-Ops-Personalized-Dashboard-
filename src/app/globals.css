@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 
 
@@ -7,22 +7,28 @@
    TOKENS
 ═══════════════════════════════════════════ */
 :root{
-  --pink:   #CF278D;  --pink-d: #a81f72;  --pink-g: rgba(207,39,141,.11);  --pink-lt: #fce7f3;
-  --blue:   #354894;  --blue-d: #253472;  --blue-g: rgba(53,72,148,.11);   --blue-lt: #eef0fa;
-  --yellow: #EFAD1E;  --yel-d:  #c98e10;  --yel-lt: #fef9e7;  --yel-md: #fde68a;
-  --red:    #EF3D5E;  --red-d:  #c42d4a;  --red-lt: #fde8ec;
+  /* ── Brand: Magenta (accent) ── */
+  --pink:   #C02080;  --pink-d: #A01868;  --pink-g: rgba(192,32,128,.11);  --pink-lt: #FCE8F5;
+  /* ── Brand: Indigo (primary 70%) ── */
+  --blue:   #304090;  --blue-d: #1B2856;  --blue-g: rgba(48,64,144,.11);   --blue-lt: #F1F2FB;
+  /* ── Brand: Sunrise (warning) ── */
+  --yellow: #E0A010;  --yel-d:  #b87e0a;  --yel-lt: #FEF9E7;  --yel-md: #fde68a;
+  /* ── Brand: Coral (alerts) ── */
+  --red:    #E03050;  --red-d:  #b82540;  --red-lt: #FDE8EC;
+  /* ── Status: Green ── */
   --green:  #00bf63;  --grn-d:  #009e52;  --grn-lt: #dcfce7;  --grn-md: #bbf7d0;
-  --orange: #f97316;  --org-lt: #fff7ed;  --org-md: #fed7aa;
+  --orange: #E0A010;  --org-lt: #FEF9E7;  --org-md: #fde68a;
 
   --row-pending: #ffffff;
-  --row-claimed: #fef9e7;
-  --row-done:    #eef0fa;
+  --row-claimed: #FEF9E7;
+  --row-done:    #F1F2FB;
 
-  --bg: #f2f4f9; --card: #fff; --border: #e2e8f0; --border2: #cbd5e1;
-  --text: #111827; --sub: #5a6480; --muted: #9ca3af;
-  --font: 'Plus Jakarta Sans', sans-serif;
+  --bg: #F8F9FC; --card: #FFFFFF; --border: #E2E8F0; --border2: #cbd5e1;
+  --text: #1B1838; --sub: #5A5F76; --muted: #9CA3AF;
+  --font: 'Poppins', sans-serif;
   --mono: 'JetBrains Mono', monospace;
   --ease: cubic-bezier(.4,0,.2,1);
+  --ease-hover: cubic-bezier(0,0,.2,1);
   --nav: 62px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -36,8 +42,8 @@ button{font-family:var(--font)}
 ═══════════════════════════════════════════ */
 .nav{
   position:sticky;top:0;z-index:400;height:var(--nav);
-  background:linear-gradient(135deg,var(--pink) 0%,var(--pink-d) 100%);
-  box-shadow:0 3px 20px rgba(207,39,141,.28);padding:0 22px;
+  background:linear-gradient(135deg,var(--blue) 0%,var(--blue-d) 100%);
+  box-shadow:0 3px 16px rgba(48,64,144,.22);padding:0 22px;
 }
 .nav-in{max-width:1200px;margin:0 auto;height:100%;
          display:flex;align-items:center;justify-content:space-between;gap:14px}
@@ -132,12 +138,12 @@ button{font-family:var(--font)}
 .shift-divider{width:1px;height:44px;background:var(--border);flex-shrink:0}
 .shift-btns{display:flex;gap:8px;align-items:center}
 
-.sbt{padding:9px 20px;border-radius:9px;border:none;cursor:pointer;
-      font-family:var(--font);font-size:13px;font-weight:800;
-      transition:all .15s var(--ease);display:flex;align-items:center;gap:6px}
-.sbt-start{background:var(--pink);color:#fff}
-.sbt-start:hover{background:var(--pink-d);transform:translateY(-1px);
-                  box-shadow:0 5px 16px rgba(207,39,141,.3)}
+.sbt{padding:9px 20px;border-radius:12px;border:none;cursor:pointer;
+      font-family:var(--font);font-size:13px;font-weight:700;
+      transition:all 140ms var(--ease-hover);display:flex;align-items:center;gap:6px}
+.sbt-start{background:var(--blue);color:#fff}
+.sbt-start:hover{background:var(--blue-d);transform:translateY(-1px);
+                  box-shadow:0 5px 16px rgba(48,64,144,.28)}
 .sbt-end{background:var(--red-lt);color:var(--red);border:1.5px solid #fba6b5}
 .sbt-end:hover{background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-1px)}
 .sbt:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
@@ -161,12 +167,12 @@ button{font-family:var(--font)}
 .tabs-wrapper{margin-bottom:14px}
 .tabs{display:flex;gap:4px;flex-wrap:wrap}
 .tab-btn{
-  padding:8px 20px;border-radius:8px;border:1.5px solid var(--border);
-  background:var(--card);font-family:var(--font);font-size:12.5px;font-weight:700;
-  color:var(--sub);cursor:pointer;transition:all .15s var(--ease);white-space:nowrap;
+  padding:8px 20px;border-radius:12px;border:1.5px solid var(--border);
+  background:var(--card);font-family:var(--font);font-size:12.5px;font-weight:600;
+  color:var(--sub);cursor:pointer;transition:all 140ms var(--ease-hover);white-space:nowrap;
 }
-.tab-btn:hover{border-color:var(--pink);color:var(--pink)}
-.tab-btn.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.tab-btn:hover{border-color:var(--blue);color:var(--blue)}
+.tab-btn.on{background:var(--blue);border-color:var(--blue);color:#fff}
 .tab-content{display:none}
 .tab-content.on{display:block}
 .todo-count{background:rgba(0,0,0,.08);border-radius:99px;padding:1px 8px;font-size:11px;margin-left:5px}
@@ -188,10 +194,10 @@ button{font-family:var(--font)}
 .toolbar-title{font-size:10px;font-weight:800;text-transform:uppercase;
                letter-spacing:.9px;color:var(--pink)}
 .btn-add-custom{
-  padding:6px 14px;border-radius:7px;border:1.5px solid var(--pink);
+  padding:6px 14px;border-radius:10px;border:1.5px solid var(--pink);
   background:var(--pink-lt);color:var(--pink);
-  font-family:var(--font);font-size:12px;font-weight:800;
-  cursor:pointer;transition:all .15s var(--ease);display:flex;align-items:center;gap:5px;
+  font-family:var(--font);font-size:12px;font-weight:700;
+  cursor:pointer;transition:all 140ms var(--ease-hover);display:flex;align-items:center;gap:5px;
 }
 .btn-add-custom:hover{background:var(--pink);color:#fff}
 .btn-add-custom:disabled{opacity:.45;cursor:not-allowed}
@@ -799,19 +805,8 @@ td{padding:9px 12px;vertical-align:middle}
 }
 
 
-/* REG */
-
-
-
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --blue:#354894; --blue-d:#253472; --blue-lt:#eef0fa; --blue-g:rgba(53,72,148,.12);
-  --pink:#CF278D; --pink-d:#a81f72; --pink-g:rgba(207,39,141,.10);
-  --red:#E13D5E; --border:#e2e8f0;
-  --text:#111827; --sub:#6b7280; --muted:#9ca3af;
-  --font:'Plus Jakarta Sans',sans-serif;
-}
-.reg-wrapper{  font-family:var(--font);min-height:100vh;  display:flex;align-items:center;justify-content:center;padding:24px 16px;  background:radial-gradient(ellipse at 20% 20%,rgba(53,72,148,.08) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(207,39,141,.06) 0%,transparent 55%),#f0f2f8;}
+/* REG — inherits root tokens above */
+.reg-wrapper{  font-family:var(--font);min-height:100vh;  display:flex;align-items:center;justify-content:center;padding:24px 16px;  background:radial-gradient(ellipse at 20% 20%,rgba(48,64,144,.08) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(192,32,128,.06) 0%,transparent 55%),#F8F9FC;}
 .card{
   background:#fff;border-radius:20px;
   box-shadow:0 4px 8px rgba(0,0,0,.04),0 20px 50px rgba(0,0,0,.12);
@@ -828,10 +823,10 @@ td{padding:9px 12px;vertical-align:middle}
 .bico{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.18);
        display:grid;place-items:center;flex-shrink:0}
 .bico svg{width:24px;height:24px}
-.bname{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.3px}
-.bsub{font-size:9.5px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.8px;text-transform:uppercase}
-.hd h1{font-size:21px;font-weight:800;color:#fff;letter-spacing:-.4px;margin-bottom:4px}
-.hd p{font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.55}
+.bname{font-size:16px;font-weight:700;color:#fff;letter-spacing:-.2px}
+.bsub{font-size:9.5px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.8px;text-transform:uppercase}
+.hd h1{font-size:21px;font-weight:800;color:#fff;letter-spacing:-.3px;margin-bottom:4px}
+.hd p{font-size:12.5px;font-weight:400;color:rgba(255,255,255,.72);line-height:1.55}
 
 /* Pink accent stripe */
 .accent-bar{height:4px;background:linear-gradient(90deg,var(--pink),#f472b6)}
@@ -869,3 +864,4 @@ input::placeholder{color:var(--muted)}
 .msg.ok{background:var(--blue-lt);color:var(--blue);border:1px solid #c7cdf0}
 .msg.show{display:block}
 .note{text-align:center;font-size:11px;color:var(--muted);margin-top:18px;line-height:1.6}
+
